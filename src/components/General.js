@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Condition from "./Condition"
+import 'react-phone-number-input/style.css'
+import PhoneInput,{formatPhoneNumberIntl} from 'react-phone-number-input'
 
 class General extends Component {
     constructor(props) {
@@ -31,7 +33,7 @@ class General extends Component {
 
     addNumber(e){
         this.setState({
-            number: e.target.value,
+            number: e,
         })
     }
 
@@ -42,7 +44,7 @@ class General extends Component {
     }
 
     render() {
-        return this.state.submit ? (
+        return this.state.submit && this.state.name && this.state.number && this.state.email ? (
             <Condition process="add" name={this.state.name} number = {this.state.number} email = {this.state.email} />
         ) : (
             <div>
@@ -52,7 +54,7 @@ class General extends Component {
                     <label for="email">Email:</label>
                     <input type="email" id="email" onChange={(e)=>this.addEmail(e)} value={this.state.email} required/>
                     <label for="number">Number:</label>
-                    <input type="tel" id="number" onChange={(e)=>this.addNumber(e)} value={this.state.number} required/>
+                    <PhoneInput id="number" defaultCountry="KZ" onChange={(e)=>this.addNumber(e)} value={formatPhoneNumberIntl(this.state.number)} placeholder="+7 *** ** **" required/>
                     <button type="submit" onClick={this.changeSubmit}>Save</button>
                 </form>
             </div>
