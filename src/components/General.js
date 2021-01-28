@@ -49,12 +49,19 @@ class General extends Component {
         ) : (
             <div>
                 <form action="#">
+                    <h3>General Information</h3>
+                    <div>
                     <label for="name"  >Name:</label>
                     <input type="text" id="name" onChange={(e)=>this.addName(e)} value={this.state.name} required/>
+                    </div>
+                    <div>
                     <label for="email">Email:</label>
                     <input type="email" id="email" onChange={(e)=>this.addEmail(e)} value={this.state.email} required/>
+                    </div>
+                    <div>
                     <label for="number">Number:</label>
                     <PhoneInput id="number" defaultCountry="KZ" onChange={(e)=>this.addNumber(e)} value={formatPhoneNumberIntl(this.state.number)} placeholder="+7 *** ** **" required/>
+                    </div>
                     <button type="submit" onClick={this.changeSubmit}>Save</button>
                 </form>
             </div>
