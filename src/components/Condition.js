@@ -24,13 +24,13 @@ class Condition extends Component {
 
                 {this.props.process === 'editEdu' &&
                     <div>
-                        <Edu name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
+                        <Edu list={this.props.list} name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
                         {console.log('editEdu')}
                     </div>
                 }
                 {this.props.additional && 
                     <div>
-                    <EduShow name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
+                    <EduShow  name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
                     {console.log('add')}
                 </div>
                 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Condition from './Condition'
+import Edu from './Edu'
 
 class EduShow extends Component {
     constructor(props){
@@ -17,7 +18,7 @@ class EduShow extends Component {
     }
     render() {
         return this.state.submit ? (
-            <Condition process="edit" name={this.props.name} number={this.props.number} email={this.props.email} />
+            <Edu process={true} list={this.props.list} name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
         ):(
             <div>
                 <form action="#">

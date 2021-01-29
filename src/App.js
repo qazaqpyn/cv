@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <Condition process="edit" />
-      <Condition process="editEdu" />
+      <Condition process="editEdu" list={[]} />
     </div>
   );
 }
