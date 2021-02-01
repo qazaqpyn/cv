@@ -5,21 +5,19 @@ import Edu from './Edu'
 class EduShow extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            submit: false,
-        };
-        this.changeSubmit = this.changeSubmit.bind(this);
+        // this.state = {
+        //     submit: false,
+        // };
+        // this.changeSubmit = this.changeSubmit.bind(this);
     }
 
-    changeSubmit(){
-        this.setState({
-            submit: !this.state.submit,
-        })
-    }
+    // changeSubmit(){
+    //     this.setState({
+    //         submit: !this.state.submit,
+    //     })
+    // }
     render() {
-        return this.state.submit ? (
-            <Edu process={true} list={this.props.list} name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
-        ):(
+        return (
             <div>
                 <form action="#">
                     <div>
@@ -34,7 +32,7 @@ class EduShow extends Component {
                     <label for="date">Date of study:</label>
                     <p id="date">{this.props.start}:{this.props.end}</p>
                     </div>
-                    <button onClick={this.changeSubmit}>Edit</button>
+                    <button onClick={()=>this.props.edit(this.props.name, this.props.title, this.props.start, this.props.end, this.props.listID)}>Edit</button>
                 </form>
             </div>
         ) 

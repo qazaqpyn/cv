@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Condition from './Condition'
 import EduShow from './EduShow'
 
 class Edu extends Component {
@@ -12,6 +11,7 @@ class Edu extends Component {
             end: this.props.end,
             submit: false,
             showList: this.props.list,
+            edit: this.props.edit,
         }
 
         this.addName = this.addName.bind(this);
@@ -19,6 +19,14 @@ class Edu extends Component {
         this.addStart = this.addStart.bind(this);
         this.addEnd = this.addEnd.bind(this);
         this.addList = this.addList.bind(this);
+        this.changeEdit = this.changeEdit.bind(this);
+        this.editInfo = this.editInfo.bind(this);
+    }
+
+    changeEdit() {
+        this.setState({
+            edit: !this.state.edit,
+        })
     }
 
     addName(e) {
@@ -49,12 +57,21 @@ class Edu extends Component {
     addList() {
         //every time we press add info with edushow added to the list and it just showed in the screen
         this.setState({
-            showList: this.state.showList.concat(<EduShow list={this.state.showList} name={this.state.name} title={this.state.title} start={this.state.start} end={this.state.end}/>),
+            showList: this.state.showList.concat(<EduShow key={this.state.showList.length-1} list={this.state.showList} name={this.state.name} title={this.state.title} start={this.state.start} end={this.state.end}/>),
             name: '',
             title: '',
             start: '',
             end: '',
+            edit: false,
+            submit: true,
         })
+    }
+    
+    editInfo() {
+        this.setState({
+            showList: this.state.showList.splice(this.props.key,1),
+        })
+
     }
 
     render() {
@@ -66,52 +83,52 @@ class Edu extends Component {
         // after pressing save button this props should again became false to show like usual
         return (
             <div>
-                <h3>Education</h3>
-                {this.state.showList}
-                <div>
-                <form action="#">
-                    
+                {this.state.edit
+                ? <div> 
+                        {this.editInfo}
+                        {console.log(this.state.showList)}
+                        {this.state.showList}
+                        <form action="#"> 
+                            <div>
+                            <label for="name">School Name:</label>
+                            <input onChange={(e)=>this.addName(e)} type="text" id="name" value={this.state.name}/>
+                            </div>
+                            <div>
+                            <label for="title">Title of study:</label>
+                            <input type="text" onChange={e=>this.addTitle(e)} id="title" value={this.state.title} />
+                            </div>
+                            <div>
+                            <label for="date">Date of study:</label>
+                            <input type="date" onChange={e=>this.addStart(e)} id="date" value={this.state.start} />
+                            <input type="date" onChange={e=>this.addEnd(e)} id="date" value={this.state.end} />
+                            </div>
+                            <button type="submit" onClick={this.addList}>Save</button>
+                        </form>
+                </div>
+                : <div>
+                    <h3>Education</h3>
+                    {this.state.showList}
                     <div>
-                    <label for="name">School Name:</label>
-                    <input onChange={(e)=>this.addName(e)} type="text" id="name" value={this.state.name}/>
+                        <form action="#"> 
+                            <div>
+                            <label for="name">School Name:</label>
+                            <input onChange={(e)=>this.addName(e)} type="text" id="name" value={this.state.name}/>
+                            </div>
+                            <div>
+                            <label for="title">Title of study:</label>
+                            <input type="text" onChange={e=>this.addTitle(e)} id="title" value={this.state.title} />
+                            </div>
+                            <div>
+                            <label for="date">Date of study:</label>
+                            <input type="date" onChange={e=>this.addStart(e)} id="date" value={this.state.start} />
+                            <input type="date" onChange={e=>this.addEnd(e)} id="date" value={this.state.end} />
+                            </div>
+                            <button type="submit" onClick={this.addList}>Save</button>
+                        </form>
                     </div>
-                    <div>
-                    <label for="title">Title of study:</label>
-                    <input type="text" onChange={e=>this.addTitle(e)} id="title" value={this.state.title} />
-                    </div>
-                    <div>
-                    <label for="date">Date of study:</label>
-                    <input type="date" onChange={e=>this.addStart(e)} id="date" value={this.state.start} />
-                    <input type="date" onChange={e=>this.addEnd(e)} id="date" value={this.state.end} />
-                    </div>
-                    <button type="submit" onClick={this.addList}>Save</button>
-                </form>
-            </div>
+                </div>}
             </div>
         )
-        // return this.state.submit && this.state.name && this.state.title && this.state.startDate ? (
-        //     <Condition additional="addEdu" />
-        // ):(
-        //     <div>
-        //         <form action="#">
-        //             <h3>Education</h3>
-        //             <div>
-        //             <label for="name">School Name:</label>
-        //             <input onChange={(e)=>this.addName(e)} type="text" id="name" required/>
-        //             </div>
-        //             <div>
-        //             <label for="title">Title of study:</label>
-        //             <input type="text" onChange={e=>this.addTitle(e)} id="title" required/>
-        //             </div>
-        //             <div>
-        //             <label for="date">Date of study:</label>
-        //             <input type="date" onChange={e=>this.addStart(e)} id="date" required/>
-        //             <input type="date" onChange={e=>this.addEnd(e)} id="date" required/>
-        //             </div>
-        //             <button type="submit" onClick={this.changeSubmit}>Save</button>
-        //         </form>
-        //     </div>
-        // )
     }
 }
 

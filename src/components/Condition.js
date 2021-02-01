@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import General from "./General"
 import GeneralEdit from "./GeneralEdit"
-import Edu from './Edu'
+import Education from './Education'
 import EduShow from './EduShow'
 
 class Condition extends Component {
@@ -24,17 +24,10 @@ class Condition extends Component {
 
                 {this.props.process === 'editEdu' &&
                     <div>
-                        <Edu list={this.props.list} name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
+                        <Education list={this.props.list} edit={this.props.edit} name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
                         {console.log('editEdu')}
                     </div>
                 }
-                {this.props.additional && 
-                    <div>
-                    <EduShow  name={this.props.name} title={this.props.title} start={this.props.start} end={this.props.end} />
-                    {console.log('add')}
-                </div>
-                }
-
             </div>
         )
     }
