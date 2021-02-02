@@ -1,12 +1,15 @@
 import './App.css';
 import Condition from './components/Condition'
+import Practice from './components/Practice'
+import Education from './components/Education'
 
 
 function App() {
   return (
     <div>
       <Condition process="edit" />
-      <Condition process="editEdu" list={[]} edit={false} />
+      <Education list={[]} />
+      <Practice list={[]} />
     </div>
   );
 }

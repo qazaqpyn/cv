@@ -1,21 +1,12 @@
 import React, { Component } from 'react'
-import Condition from './Condition'
-import Edu from './Edu'
+
+
 
 class EduShow extends Component {
     constructor(props){
         super(props);
-        // this.state = {
-        //     submit: false,
-        // };
-        // this.changeSubmit = this.changeSubmit.bind(this);
     }
 
-    // changeSubmit(){
-    //     this.setState({
-    //         submit: !this.state.submit,
-    //     })
-    // }
     render() {
         return (
             <div>

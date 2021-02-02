@@ -81,11 +81,16 @@ export class Education extends Component {
         return (
             <div>
                 <h2>Education</h2>
-                {/* rebuild this.state.list like in the video to delete it at particular moment https://www.youtube.com/watch?v=tJYBMSuOX3s */}
                 {
                 this.state.list.map((edu, index)=>{
                     return (
-                        <EduShow edit={this.editInfo} listID={index} name={edu.name} title={edu.title} start={edu.start} end={edu.end} />
+                        <EduShow 
+                        edit={this.editInfo} 
+                        listID={index} 
+                        name={edu.name} 
+                        title={edu.title} 
+                        start={edu.start} 
+                        end={edu.end} />
                     )
                 })
                 }
