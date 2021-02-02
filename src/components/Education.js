@@ -20,20 +20,31 @@ export class Education extends Component {
     }
 
     editInfo(eName, eTitle, eStart, eEnd, Ekey) {
+        console.log(eName + " deleting "+ Ekey)
+        const list = Object.assign([],this.state.list);
+        list.splice(Ekey,1);
+        
         this.setState({
-            list: this.state.list.splice(Ekey,1),
+            list: list,
             name: eName,
             title: eTitle,
             start: eStart,
             end: eEnd,
         })
+        console.log(this.state.list);
     }
 
     addList() {
         console.log("i am adding to list")
         //every time we press add info with edushow added to the list and it just showed in the screen
         this.setState({
-            list: this.state.list.concat(<EduShow listID={this.state.list.length-1} edit={this.editInfo}  name={this.state.name} title={this.state.title} start={this.state.start} end={this.state.end}/>),
+            list: this.state.list.concat(
+            { 
+            name:this.state.name,
+            title:this.state.title,
+            start:this.state.start,
+            end:this.state.end}
+            ),
             name: '',
             title: '',
             start: '',
@@ -71,7 +82,13 @@ export class Education extends Component {
             <div>
                 <h2>Education</h2>
                 {/* rebuild this.state.list like in the video to delete it at particular moment https://www.youtube.com/watch?v=tJYBMSuOX3s */}
-                {this.state.list}
+                {
+                this.state.list.map((edu, index)=>{
+                    return (
+                        <EduShow edit={this.editInfo} listID={index} name={edu.name} title={edu.title} start={edu.start} end={edu.end} />
+                    )
+                })
+                }
                 <form action="#"> 
                     <div>
                     <label for="name">School Name:</label>
