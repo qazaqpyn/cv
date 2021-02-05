@@ -115,19 +115,19 @@ class Practice extends Component {
 
                 {!this.props.preview &&
                     <form action="#"> 
-                        <div>
+                        <div className="input-container">
                             <label for="name">Company Name:</label>
                             <input onChange={(e)=>this.addName(e)} type="text" id="name" value={this.state.name}/>
                         </div>
-                        <div>
+                        <div className="input-container">
                             <label for="position">Position:</label>
                             <input type="text" onChange={e=>this.addPosition(e)} id="position" value={this.state.position} />
                         </div>
-                        <div>
+                        <div className="input-container">
                             <label for="task">Main Tasks of Job:</label>
                             <input type="text" onChange={e=>this.addTasks(e)} id="task" value={this.state.tasks} />
                         </div>
-                        <div>
+                        <div className="input-container">
                             <label for="date">Date of Job:</label>
                             <input type="date" onChange={e=>this.addStart(e)} id="date" value={this.state.start} />
                             <input type="date" onChange={e=>this.addEnd(e)} id="date" value={this.state.end} />

@@ -21,8 +21,8 @@ export class GeneralEdit extends Component {
             <Condition preview={this.props.preview} process="edit" name={this.props.name} number={this.props.number} email={this.props.email} />
         ):(
             <div>
+                <h2>General Information</h2>
                 <form action="#">
-                    <h2>General Information</h2>
                     <div>
                         <p id="name">Name: {this.props.name}</p>
                     </div>
@@ -30,7 +30,7 @@ export class GeneralEdit extends Component {
                         <p id="email">Email: {this.props.email}</p>
                     </div>
                     <div>
-                        <p id="number"> Number{this.props.number}</p>
+                        <p id="number"> Number: {this.props.number}</p>
                     </div>
                     <button style={{display:this.props.preview?'none':'block'}} onClick={this.changeSubmit}>Edit</button>
                 </form>

@@ -48,19 +48,19 @@ class General extends Component {
             <Condition preview={this.props.preview} process="add" name={this.state.name} number = {this.state.number} email = {this.state.email} />
         ) : (
             <div>
+                <h2>General Information</h2>
                 <form action="#">
-                    <h2>General Information</h2>
-                    <div>
+                    <div className="input-container">
                     <label for="name"  >Name:</label>
                     <input type="text" id="name" onChange={(e)=>this.addName(e)} value={this.state.name} required/>
                     </div>
-                    <div>
+                    <div className="input-container">
                     <label for="email">Email:</label>
                     <input type="email" id="email" onChange={(e)=>this.addEmail(e)} value={this.state.email} required/>
                     </div>
-                    <div>
+                    <div className="input-container">
                     <label for="number">Number:</label>
-                    <PhoneInput id="number" defaultCountry="KZ" onChange={(e)=>this.addNumber(e)} value={formatPhoneNumberIntl(this.state.number)} placeholder="+7 *** ** **" required/>
+                    <PhoneInput id="number" defaultCountry="KZ" onChange={(e)=>this.addNumber(e)} value={formatPhoneNumberIntl(this.state.number)} required/>
                     </div>
                     <button type="submit" onClick={this.changeSubmit}>Save</button>
                 </form>
