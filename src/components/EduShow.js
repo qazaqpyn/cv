@@ -12,18 +12,16 @@ class EduShow extends Component {
             <div>
                 <form action="#">
                     <div>
-                    <label for="name">School Name:</label>
-                    <p id="name">{this.props.name}</p>
+                        <p id="name">School Name: {this.props.name}</p>
                     </div>
                     <div>
-                    <label for="title">Title of study:</label>
-                    <p id="title">{this.props.title}</p>
+                        <p id="title">Title of study: {this.props.title}</p>
                     </div>
                     <div>
-                    <label for="date">Date of study:</label>
-                    <p id="date">{this.props.start}:{this.props.end}</p>
+                        <p id="date">Duration: {this.props.start}:{this.props.end}</p>
                     </div>
-                    <button onClick={()=>this.props.edit(this.props.name, this.props.title, this.props.start, this.props.end, this.props.listID)}>Edit</button>
+                    <button style={{display:this.props.preview?'none':'inline-block'}} onClick={()=>this.props.edit(this.props.name, this.props.title, this.props.start, this.props.end, this.props.listID)}>Edit</button>
+                    <button style={{display:this.props.preview?'none':'inline-block'}} onClick={()=>this.props.delete(this.props.listID)}>Delete</button>
                 </form>
             </div>
         ) 

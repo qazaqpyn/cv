@@ -18,24 +18,21 @@ export class GeneralEdit extends Component {
 
     render() {
         return this.state.submit ? (
-            <Condition process="edit" name={this.props.name} number={this.props.number} email={this.props.email} />
+            <Condition preview={this.props.preview} process="edit" name={this.props.name} number={this.props.number} email={this.props.email} />
         ):(
             <div>
                 <form action="#">
-                    <h3>General Information</h3>
+                    <h2>General Information</h2>
                     <div>
-                    <label for="name"  >Name:</label>
-                    <p id="name">{this.props.name}</p>
+                        <p id="name">Name: {this.props.name}</p>
                     </div>
                     <div>
-                    <label for="email">Email:</label>
-                    <p id="email">{this.props.email}</p>
+                        <p id="email">Email: {this.props.email}</p>
                     </div>
                     <div>
-                    <label for="number">Number:</label>
-                    <p id="number">{this.props.number}</p>
+                        <p id="number"> Number{this.props.number}</p>
                     </div>
-                    <button onClick={this.changeSubmit}>Edit</button>
+                    <button style={{display:this.props.preview?'none':'block'}} onClick={this.changeSubmit}>Edit</button>
                 </form>
             </div>
         ) 

@@ -20,7 +20,16 @@ class PracticeShow extends Component {
                     <div>
                         <p id="date">Duration: {this.props.start}:{this.props.end}</p>
                     </div>
-                    <button onClick={()=>this.props.edit(this.props.listID, this.props.name, this.props.position,this.props.tasks, this.props.start, this.props.end)}>Edit</button>
+                    <button 
+                        style={{display:this.props.preview?'none':'inline-block'}} 
+                        onClick={()=>this.props.edit(this.props.listID, this.props.name, this.props.position,this.props.tasks, this.props.start, this.props.end)}>
+                            Edit
+                    </button>
+                    <button 
+                        style={{display:this.props.preview?'none':'inline-block'}} 
+                        onClick={()=>this.props.delete(this.props.listID)}>
+                            Delete
+                    </button>
                 </form>
             </div>
         )

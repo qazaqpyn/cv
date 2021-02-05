@@ -14,12 +14,13 @@ class Condition extends Component {
         return (
             <div>
                 {console.log(this.props.process)}
+                {console.log('in condition :'+this.props.preview)}
                 {this.props.process==="add" &&
-                    <GeneralEdit  name={this.props.name} number={this.props.number} email={this.props.email} />
+                    <GeneralEdit preview={this.props.preview}  name={this.props.name} number={this.props.number} email={this.props.email} />
                 }
 
                 {this.props.process==='edit' &&
-                    <General  name={this.props.name} number={this.props.number} email={this.props.email} />
+                    <General preview={this.props.preview}  name={this.props.name} number={this.props.number} email={this.props.email} />
                 }
             </div>
         )

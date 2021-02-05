@@ -44,12 +44,12 @@ class General extends Component {
     }
 
     render() {
-        return this.state.submit && this.state.name && this.state.number && this.state.email ? (
-            <Condition process="add" name={this.state.name} number = {this.state.number} email = {this.state.email} />
+        return (this.state.submit && this.state.name && this.state.number && this.state.email) || this.props.preview ? (
+            <Condition preview={this.props.preview} process="add" name={this.state.name} number = {this.state.number} email = {this.state.email} />
         ) : (
             <div>
                 <form action="#">
-                    <h3>General Information</h3>
+                    <h2>General Information</h2>
                     <div>
                     <label for="name"  >Name:</label>
                     <input type="text" id="name" onChange={(e)=>this.addName(e)} value={this.state.name} required/>

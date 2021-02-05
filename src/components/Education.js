@@ -17,6 +17,15 @@ export class Education extends Component {
         this.addEnd = this.addEnd.bind(this);
         this.addList = this.addList.bind(this);
         this.editInfo = this.editInfo.bind(this);
+        this.deleteInfo = this.deleteInfo.bind(this);
+    }
+
+    deleteInfo(index){
+        const list = Object.assign([],this.state.list);
+        list.splice(index,1);
+        this.setState({
+            list: list,
+        })
     }
 
     editInfo(eName, eTitle, eStart, eEnd, Ekey) {
@@ -84,7 +93,9 @@ export class Education extends Component {
                 {
                 this.state.list.map((edu, index)=>{
                     return (
-                        <EduShow 
+                        <EduShow
+                        preview = {this.props.preview}
+                        delete = {this.deleteInfo}
                         edit={this.editInfo} 
                         listID={index} 
                         name={edu.name} 
@@ -94,22 +105,24 @@ export class Education extends Component {
                     )
                 })
                 }
-                <form action="#"> 
-                    <div>
-                    <label for="name">School Name:</label>
-                    <input onChange={(e)=>this.addName(e)} type="text" id="name" value={this.state.name}/>
-                    </div>
-                    <div>
-                    <label for="title">Title of study:</label>
-                    <input type="text" onChange={e=>this.addTitle(e)} id="title" value={this.state.title} />
-                    </div>
-                    <div>
-                    <label for="date">Date of study:</label>
-                    <input type="date" onChange={e=>this.addStart(e)} id="date" value={this.state.start} />
-                    <input type="date" onChange={e=>this.addEnd(e)} id="date" value={this.state.end} />
-                    </div>
-                    <button type="submit" onClick={this.addList}>Save</button>
-                </form>
+                {!this.props.preview &&
+                    <form action="#"> 
+                        <div>
+                        <label for="name">School Name:</label>
+                        <input onChange={(e)=>this.addName(e)} type="text" id="name" value={this.state.name}/>
+                        </div>
+                        <div>
+                        <label for="title">Title of study:</label>
+                        <input type="text" onChange={e=>this.addTitle(e)} id="title" value={this.state.title} />
+                        </div>
+                        <div>
+                        <label for="date">Date of study:</label>
+                        <input type="date" onChange={e=>this.addStart(e)} id="date" value={this.state.start} />
+                        <input type="date" onChange={e=>this.addEnd(e)} id="date" value={this.state.end} />
+                        </div>
+                        <button type="submit" onClick={this.addList}>Save</button>
+                    </form>
+                }
             </div>
         )
     }
